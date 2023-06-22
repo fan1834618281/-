@@ -1,0 +1,205 @@
+/*  */
+html {
+  font-size: 100px; //1rem=100px  在（375设计稿）
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 540px;
+  font-size: .14rem;
+  position: relative;
+}
+
+.header_box,
+.footer_box,
+.main_box {
+  box-sizing: border-box;
+  height: 1rem;
+  overflow: hidden;
+}
+
+.header_box {
+  color: #fff;
+  padding: .2rem;
+  display: flex;
+
+  .base {
+    display: flex;
+
+    img {
+      width: .7rem;
+      height: .7rem;
+    }
+  }
+
+  .info {
+    margin-left: .2rem;
+
+    .title {
+      line-height: .5rem;
+    }
+  }
+
+  .player_button {
+    width: 0.34rem;
+    height: 0.34rem;
+    background: url(./images/music.svg) no-repeat;
+    background-size: cover;
+    margin: .2rem 0 0 .3rem;
+    &.move {
+      animation: musicMove 1s linear 0s infinite both;
+  }
+  }
+}
+
+@keyframes musicMove {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+.main_box {
+/*   height: calc(100vh - 2rem); */
+
+  .wrapper {
+    transform: translateY(0);
+    transition: transform .3s;
+    p {
+      height: .5rem;
+      line-height: .5rem;
+      text-align: center;
+      color: @com-gray;
+
+      &.active {
+          color: @com-green;
+          transition: color .3s;
+      }
+    }
+  }
+}
+
+.footer_box {
+  box-sizing: border-box;
+  padding: 0 0.2rem;
+  width: 100%;
+  height: 1rem;
+
+  .bar {
+    display: flex;
+
+    align-items: center;
+  }
+
+  .time {
+    font-size: .12px;
+    width: 0.4rem;
+    height: 0.46rem;
+    line-height: 0.46rem;
+    color: #fff;
+  }
+
+  .progress {
+    box-sizing: border-box;
+    height: 0.02rem;
+    width: calc(100vh - 1.32rem);
+    background: #191986;
+
+    .already {
+      width: 0%;
+      height: 0.02rem;
+      z-index: 2;
+      background: #fff;
+    }
+  }
+
+  .download {
+    display: block;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    width: 2.13rem;
+    height: .5rem;
+    line-height: .5rem;
+    text-align: center;
+    font-size: 0.18rem;
+    color: #fff;
+    text-indent: 0.4rem;
+    background: url(http://zxt_team.gitee.io/qq-music-player/css/../images/sprite_play.png) no-repeat #31C27C;
+    background-size: 0.4rem 3.5rem;
+    background-position: 0.1rem -2.9rem;
+
+  }
+}
+
+/* 音频 */
+.audioBox {
+  display: none;
+}
+
+/* loading层 */
+.loading_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #72aaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    img,
+    span {
+      display: block;
+    }
+
+    img {
+      width: .5rem;
+      height: .5rem;
+      margin: 0 auto;
+    }
+    span {
+      color: #fff;
+      margin-top: .1rem;
+    }
+  }
+}
+
+
+/* 背景层 */
+.mark_image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* 以最适合的比例显示 */
+  /* 设置模糊度 */
+  filter: blur(6px);
+  z-index: -2;
+}
+
+.mark_image,
+.mark_overlay {
+  position: absolute;
+  left: -10%;
+  top: -10%;
+  width: 120%;
+  height: 120%;
+}
+
+.mark_overlay {
+  z-index: -1;
+  background: rgba(0, 0, 0, .5);
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>珠峰培训-QQ音乐播放器</title>
+  <!-- IMPORT CSS -->
+  <link rel="stylesheet" href="reset.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <script src="./prefixfree.min.js" async></script><!-- 自动加前缀 -->
+
+</head>
+
+<body>
+  <div id="app">
+    <header class="header_box">
+      <div class="base">
+       <!--  <div class="cover">
+          <img src="./images/myDream.jpg" alt="">
+        </div>
+        <div class="info">
+          <h2 class="title">
+            我的梦—华为手机主题曲
+          </h2>
+          <h3 class="author">张靓颖</h3>
+        </div> -->
+      </div>
+      <a href="javascript:;" class="player_button"></a>
+    </header>
+    <!-- 歌词部分 -->
+    <main class="main_box">
+      <div class="wrapper">
+     <!--    <p class="active">我的梦 (华为手机主题曲) - 张靓颖 </p>
+        <p>词：王海涛/张靓颖</p>
+        <p>曲：Andy Love</p>
+        <p>编曲：崔迪</p>
+        <p>一直地一直地往前走</p>
+        <p>疯狂的世界</p>
+        <p>迎着痛把眼中所有梦</p>
+        <p>都交给时间</p>
+        <p>因为你是我的梦</p> -->
+      </div>
+    </main>
+
+      <footer class="footer_box">
+        <div class="bar">
+          <span class="time current">00:00</span>
+          <div class="progress">
+            <div class="already"></div>
+          </div>
+          <span class="time duration">00:00</span>
+        </div>
+        <a href="#" class="download">下载这首音乐</a>
+      </footer>
+
+      <-- 其他 -->
+        <div class="mark_image"></div>
+        <div class="mark_overlay"></div>
+        <div class="loading_box">
+          <div class="content">
+            <img src="./images/loo.gif" alt="">
+            <span>正在加载中...</span>
+          </div>
+        </div>
+        <audio src="" id="audioBox" preload="metadata"></audio>
+  </div>
+
+  <!-- IMPORT JS -->
+  <script>
+    /* 动态计算rem换算比例   -orientationchange-横竖屏切换事件*/
+    (function () {
+      const app = document.querySelector("#app"),
+        HTML = document.documentElement
+
+      const computed = function computed() {
+        let orien = Math.abs(window.orientation)
+        if (orien === 90) {//横屏状态
+          app.style.display = "none"
+          alert("横屏体验不佳，请切换到竖屏")
+          return
+        }
+        app.style.display = "block"
+        //计算rem比例
+        let devicew = HTML.clientWidth,
+          designw = 375,
+          initalRatio = 100
+        if (devicew > 540) devicew = 540
+        let currentRatio = devicew / designw * initalRatio
+        HTML.style.fontSize = currentRatio + "px"
+      }
+      computed()
+      /* resize横竖屏可检测，设备切换可检测 */
+      window.addEventListener("resize", computed)
+    })()
+  </script>
+  <script src="./api.js"></script>
+  <script src="./fastclick.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
